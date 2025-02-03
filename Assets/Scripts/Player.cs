@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
     }
 
     // Método chamado ao colidir com outro objeto
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Se colidir com um inimigo, recebe dano
         if (collision.gameObject.CompareTag("Enemy"))

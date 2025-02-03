@@ -90,7 +90,7 @@ public class PlayerShot : MonoBehaviour
         // Cria um novo tiro na posição do jogador
         GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
 
-        // Configura os parâmetros do tiro (velocidade, dano, etc.)
+        // Configura os parâmetros do tiro (velocidade, dano, tiro do jogador, angulo, tempo de vida)
         shot.GetComponent<Shot>().Initialize(shotVelocity, shotDamage, true, shotAngle, shotLife);
     }
 

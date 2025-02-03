@@ -81,6 +81,9 @@ public class Shot : MonoBehaviour
         // Converte o ângulo de graus para radianos e calcula a direção do tiro
         float radian = this.angle * Mathf.Deg2Rad;
         direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+
+        // Agenda a destruição do tiro após um determinado tempo de vida
+        Invoke("DestroyShot", shotLife);
     }
 
     // Método chamado a cada frame
@@ -88,9 +91,6 @@ public class Shot : MonoBehaviour
     {
         // Aplica o movimento ao tiro
         Moviment();
-
-        // Agenda a destruição do tiro após um determinado tempo de vida
-        Invoke("DestroyShot", shotLife);
     }
 
     // Método responsável por movimentar o tiro na direção definida
