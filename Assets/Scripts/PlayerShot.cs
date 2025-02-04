@@ -20,7 +20,7 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] private int maxBombs;
 
     // Tempo de espera entre cada disparo
-    [SerializeField] private float cooldownToShot;
+    [SerializeField] private float shotCouldown;
 
     // Velocidade do tiro
     [SerializeField] private float shotVelocity;
@@ -71,7 +71,7 @@ public class PlayerShot : MonoBehaviour
         bombs = maxBombs;
         
         // Dispara repetidamente a função "Shot" com intervalo definido pelo cooldown
-        InvokeRepeating("Shot", cooldownToShot, cooldownToShot);
+        InvokeRepeating("Shot", shotCouldown, shotCouldown);
     }
 
     // Método chamado a cada frame

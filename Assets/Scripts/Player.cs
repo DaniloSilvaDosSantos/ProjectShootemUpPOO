@@ -67,21 +67,17 @@ public class Player : MonoBehaviour
     // Método para reduzir a vida do jogador ao sofrer dano
     public void TakeDamage(int damage)
     {
-        // Só recebe dano se o tempo de invulnerabilidade for 0
-        if (currentInvulnerability <= 0)
+        // Reduz a vida do jogador pelo valor do dano recebido
+        Life = life - damage;
+
+        // Reinicia o tempo de invulnerabilidade
+        currentInvulnerability = invulnerability;
+
+        // Se a vida do jogador chegar a 0 ou menos, ele é destruído
+        if (life <= 0)
         {
-            // Reduz a vida do jogador pelo valor do dano recebido
-            Life = life - damage;
-
-            // Reinicia o tempo de invulnerabilidade
-            currentInvulnerability = invulnerability;
-
-            // Se a vida do jogador chegar a 0 ou menos, ele é destruído
-            if (life <= 0)
-            {
-                life = 0;
-                Destroy(gameObject);
-            }
+            life = 0;
+            Destroy(gameObject);
         }
     }
 
@@ -103,10 +99,18 @@ public class Player : MonoBehaviour
     // Método chamado ao colidir com outro objeto
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Parar o codigo de colisão se o jogador ainda está invulneravel
+        if (currentInvulnerability <= 0) return;
+
         // Se colidir com um inimigo, recebe dano
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(1);
+        }
+        else if (collision.gameObject.CompareTag("Shot")) // Caso colidir com um tiro do inimigo, recebe dano
+        {
+            Shot shot = collision.gameObject.GetComponent<Shot>();
+            if(!shot.IsShotPlayer) TakeDamage(shot.Damage);
         }
     }
 }
