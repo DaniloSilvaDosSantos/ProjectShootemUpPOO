@@ -9,13 +9,13 @@ public class Enemie : MonoBehaviour
     private int life;
     private Rigidbody2D rb;
     [SerializeField] private float movimentSpeed;
-    [SerializeField] float movimentAngle;
-    private Vector2 movimentDirection;
+    [SerializeField] protected float movimentAngle;
+    protected Vector2 movimentDirection;
     [SerializeField] GameObject shotPrefab;
-    [SerializeField] private float shotCouldown;
+    [SerializeField] protected float shotCouldown;
     [SerializeField] private float shotVelocity;
     [SerializeField] private int shotDamage;
-    [SerializeField] private float shotAngle;
+    [SerializeField] protected float shotAngle;
     [SerializeField] private float shotLife;
 
     public int Life
@@ -29,7 +29,7 @@ public class Enemie : MonoBehaviour
         get { return maxLife; }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         rb =  GetComponent<Rigidbody2D>();
 
