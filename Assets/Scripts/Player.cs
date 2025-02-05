@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Parar o codigo de colisão se o jogador ainda está invulneravel
-        if (currentInvulnerability <= 0) return;
+        if (currentInvulnerability > 0) return;
 
         // Se colidir com um inimigo, recebe dano
         if (collision.gameObject.CompareTag("Enemy"))
@@ -110,7 +110,11 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("Shot")) // Caso colidir com um tiro do inimigo, recebe dano
         {
             Shot shot = collision.gameObject.GetComponent<Shot>();
-            if(!shot.IsShotPlayer) TakeDamage(shot.Damage);
+            if(!shot.IsShotPlayer)
+            {
+                Debug.Log("acertou");
+                TakeDamage(shot.Damage);
+            } 
         }
     }
 }

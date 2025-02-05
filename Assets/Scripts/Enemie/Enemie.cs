@@ -62,7 +62,7 @@ public class Enemie : MonoBehaviour
         rb.velocity = movimentDirection * movimentSpeed;
     }
 
-    private void Shot()
+    protected virtual void Shot()
     {
         GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
 
