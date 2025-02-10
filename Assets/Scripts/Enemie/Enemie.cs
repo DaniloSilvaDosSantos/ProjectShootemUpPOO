@@ -11,12 +11,12 @@ public class Enemie : MonoBehaviour
     [SerializeField] private float movimentSpeed;
     [SerializeField] protected float movimentAngle;
     protected Vector2 movimentDirection;
-    [SerializeField] GameObject shotPrefab;
+    [SerializeField] protected GameObject shotPrefab;
     [SerializeField] protected float shotCouldown;
-    [SerializeField] private float shotVelocity;
-    [SerializeField] private int shotDamage;
+    [SerializeField] protected float shotVelocity;
+    [SerializeField] protected int shotDamage;
     [SerializeField] protected float shotAngle;
-    [SerializeField] private float shotLife;
+    [SerializeField] protected float shotLife;
 
     public int Life
     {

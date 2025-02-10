@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("acertou");
                 TakeDamage(shot.Damage);
+                Destroy(collision.gameObject);
             } 
         }
     }

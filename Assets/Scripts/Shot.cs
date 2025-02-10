@@ -20,10 +20,10 @@ public class Shot : MonoBehaviour
     private bool isShotPlayer;
 
     // Ângulo de disparo do tiro
-    private float angle;
+    protected float angle;
 
     // Direção do movimento do tiro
-    private Vector2 direction;
+    protected Vector2 direction;
 
     // Tempo de vida do tiro antes de ser destruído
     private float shotLife;
@@ -63,7 +63,7 @@ public class Shot : MonoBehaviour
     }
 
     // Método de inicialização do tiro com os parâmetros necessários
-    public void Initialize(float velocity, int damage, bool isShotPlayer, float angle, float shotLife)
+    public virtual void Initialize(float velocity, int damage, bool isShotPlayer, float angle, float shotLife)
     {
         // Obtém a referência ao Rigidbody2D do tiro
         rb = GetComponent<Rigidbody2D>();
@@ -87,14 +87,14 @@ public class Shot : MonoBehaviour
     }
 
     // Método chamado a cada frame
-    private void Update()
+    protected virtual void Update()
     {
         // Aplica o movimento ao tiro
         Moviment();
     }
 
     // Método responsável por movimentar o tiro na direção definida
-    private void Moviment()
+    protected void Moviment()
     {
         rb.velocity = direction * velocity;
     }
