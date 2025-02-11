@@ -77,6 +77,10 @@ public class Player : MonoBehaviour
         if (life <= 0)
         {
             life = 0;
+
+            MenuController menuController = GameObject.Find("CanvasMenu").GetComponent<MenuController>();
+            menuController.showTryAgainMenu();
+
             Destroy(gameObject);
         }
     }

@@ -9,13 +9,19 @@ public class HUDController : MonoBehaviour
     [SerializeField] private List<GameObject> lifeIcons;
     [SerializeField] private int score;
     private TextMeshProUGUI scoreHud;
+    private MenuController menuController;
 
 
     private void Start()
-    {
+    {        
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
+
+        if(menuController == null)
+        {
+            menuController =  GameObject.Find("CanvasMenu").GetComponent<MenuController>();
         }
 
         if (scoreHud == null)
@@ -55,6 +61,6 @@ public class HUDController : MonoBehaviour
 
     public void OpenPauseMenu()
     {
-        Debug.Log("Abrindo o menu de pausa");
+        menuController.ShowPauseMenu();
     }
 }

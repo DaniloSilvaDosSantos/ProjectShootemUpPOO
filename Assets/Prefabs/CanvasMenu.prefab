@@ -256,7 +256,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8462099030732451001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678041283854858328}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1090278482363431699
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +389,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5847958023144870683}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678041283854858328}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: HidePauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1100275485785733949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1139,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4504895175212392098}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678041283854858328}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4490944089749094636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sair
+  m_text: MainMenu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1315,7 +1351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sair
+  m_text: MainMenu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1396,6 +1432,7 @@ GameObject:
   - component: {fileID: 7682615229696651052}
   - component: {fileID: 588583675802252095}
   - component: {fileID: 1135470743091491844}
+  - component: {fileID: 3678041283854858328}
   m_Layer: 5
   m_Name: CanvasMenu
   m_TagString: Untagged
@@ -1446,7 +1483,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &588583675802252095
 MonoBehaviour:
@@ -1488,6 +1525,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3678041283854858328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513293460028660899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864706d635cbab444be78fb48900da4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 2749304172026835683}
+  pauseMenu: {fileID: 7153131435619698648}
+  tryagainMenu: {fileID: 8598027816713309028}
 --- !u!1 &6592563767735424147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,7 +1660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7359491260928720327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678041283854858328}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7153131435619698648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1788,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -900}
-  m_SizeDelta: {x: 700, y: 300}
+  m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1559310215669497930
 CanvasRenderer:
@@ -1807,7 +1871,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6141909231547058026}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678041283854858328}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7850840232955482967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,7 +2133,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -900}
-  m_SizeDelta: {x: 700, y: 300}
+  m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &591484229493865831
 CanvasRenderer:
@@ -2140,7 +2216,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4864103066762059451}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678041283854858328}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9096259286705587983
 GameObject:
   m_ObjectHideFlags: 0
