@@ -116,7 +116,6 @@ public class Player : MonoBehaviour
             Shot shot = collision.gameObject.GetComponent<Shot>();
             if(!shot.IsShotPlayer)
             {
-                Debug.Log("acertou");
                 TakeDamage(shot.Damage);
                 Destroy(collision.gameObject);
             } 
