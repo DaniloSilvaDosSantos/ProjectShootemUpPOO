@@ -5,25 +5,28 @@ using UnityEngine;
 public class LevelSpawner : MonoBehaviour
 {
     [SerializeField] private LevelData levelData;
-    private float elapsedTime = 0f;
-    private List<EnemieSpawnInfo> remainingEnemies;
+    private Queue<EnemieSpawnInfo> enemyQueue;
+    private Coroutine spawnRoutine;
 
     void Start()
     {
-        remainingEnemies = new List<EnemieSpawnInfo>(levelData.enemiesToSpawn);
+        enemyQueue = new Queue<EnemieSpawnInfo>(levelData.enemiesToSpawn);
+        StartNextSpawn();
     }
 
-    void Update()
+    private void StartNextSpawn()
     {
-        elapsedTime += Time.deltaTime;
-
-        for (int i = remainingEnemies.Count - 1; i >= 0; i--)
+        if (enemyQueue.Count > 0)
         {
-            if (elapsedTime >= remainingEnemies[i].spawnTime)
-            {
-                Instantiate(remainingEnemies[i].enemyPrefab, remainingEnemies[i].spawnPosition, Quaternion.identity);
-                remainingEnemies.RemoveAt(i);
-            }
+            EnemieSpawnInfo nextEnemy = enemyQueue.Dequeue();
+            spawnRoutine = StartCoroutine(SpawnEnemy(nextEnemy));
         }
+    }
+
+    private IEnumerator SpawnEnemy(EnemieSpawnInfo enemyInfo)
+    {
+        yield return new WaitForSeconds(enemyInfo.spawnTime);
+        Instantiate(enemyInfo.enemyPrefab, enemyInfo.spawnPosition, Quaternion.identity);
+        StartNextSpawn();
     }
 }

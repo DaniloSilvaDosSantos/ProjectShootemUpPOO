@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Shot
+  - DeathBerrier
   layers:
   - Default
   - TransparentFX
