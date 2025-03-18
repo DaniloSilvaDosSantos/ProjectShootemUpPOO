@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0dc745478ae90748b102c9a893bc501, type: 3}
-  m_Name: Level 1
+  m_Name: Level 3
   m_EditorClassIdentifier: 
   enemiesToSpawn:
   - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
-    spawnPosition: {x: 0, y: 12}
-    spawnTime: 5
-  - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
-    spawnPosition: {x: -2, y: 12}
-    spawnTime: 3
-  - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
-    spawnPosition: {x: 2, y: 12}
-    spawnTime: 0.5
-  - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
-    spawnPosition: {x: 0, y: 12}
+    spawnPosition: {x: -1, y: 0}
     spawnTime: 4
+  - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
+    spawnPosition: {x: 1, y: 0}
+    spawnTime: 5
+  - enemyPrefab: {fileID: 3201429408858193711, guid: d9b1e039c6eccff448112ccc686f5ac1, type: 3}
+    spawnPosition: {x: 0, y: 0}
+    spawnTime: 8

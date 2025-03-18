@@ -10,9 +10,17 @@ public class LevelSpawner : MonoBehaviour
     private Queue<EnemieSpawnInfo> enemyQueue;
     // Referência para a rotina de spawn
     private Coroutine spawnRoutine;
+    // Referencia para o singleton game controller
+    private GameController gameController;
 
     void Start()
     {
+        //Pegando a referencia para o GameController
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+        // Armazenando o scriptable object contendo as informações do level atual
+        levelData = gameController.GetCurrentLevel();
+
         enemyQueue = new Queue<EnemieSpawnInfo>(levelData.enemiesToSpawn); // Inicializa a fila de inimigos
         StartNextSpawn();  // Começa a gerar os inimigos
     }
