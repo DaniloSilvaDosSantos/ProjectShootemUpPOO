@@ -18,13 +18,13 @@ MonoBehaviour:
     spawnTime: 5
   - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
     spawnPosition: {x: -2, y: 12}
-    spawnTime: 8
+    spawnTime: 3
   - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
     spawnPosition: {x: 2, y: 12}
-    spawnTime: 8.5
+    spawnTime: 0.5
   - enemyPrefab: {fileID: 4661094415504364378, guid: 6773f622a721128489c8c3d423241f6e, type: 3}
     spawnPosition: {x: 0, y: 12}
-    spawnTime: 12
+    spawnTime: 4
   - enemyPrefab: {fileID: 3201429408858193711, guid: d9b1e039c6eccff448112ccc686f5ac1, type: 3}
     spawnPosition: {x: 0, y: 12}
-    spawnTime: 16
+    spawnTime: 4

@@ -20,6 +20,12 @@ public class Player : MonoBehaviour
     // Referência ao Rigidbody2D do jogador, usada para manipular a física
     private Rigidbody2D rb;
 
+    // Referência para a camera principal
+    private Camera mainCamera;
+    // Delimitações minimas e maximas de movimentação
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
+
     // Propriedade para acessar e modificar a vida do jogador
     public int Life
     {
@@ -50,6 +56,13 @@ public class Player : MonoBehaviour
     // Método chamado quando o objeto é inicializado
     private void Start()
     {
+        // Pegando referencia da camera principal
+        mainCamera = Camera.main;
+
+        // Definindo os limites com base na câmera
+        minBounds = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        maxBounds = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
+
         // Define a vida inicial do jogador como a vida máxima
         life = maxLife;
 
@@ -62,6 +75,11 @@ public class Player : MonoBehaviour
     {
         // Atualiza o tempo de invulnerabilidade
         HandleInvulnerability();
+
+        // Limitando a posição do jogador para dentro da câmera
+        float clampedX = Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x);
+        float clampedY = Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y);
+        transform.position = new Vector2(clampedX, clampedY);
     }
 
     // Método para reduzir a vida do jogador ao sofrer dano
