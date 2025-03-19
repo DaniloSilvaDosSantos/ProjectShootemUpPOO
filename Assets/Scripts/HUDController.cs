@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,12 @@ public class HUDController : MonoBehaviour
     // Referência ao texto da pontuação
     private TextMeshProUGUI scoreHud; 
     // Referência ao controlador de menus
-    private MenuController menuController; 
+    private MenuController menuController;
+    // Referência ao controlador do game
+    private GameController gameController;
+    // Referência ao objetos dos textos de inicio de level e vitoria
+    private GameObject startLevelHUD;
+    private GameObject winLevelHUD;
 
 
     private void Start()
@@ -29,7 +35,13 @@ public class HUDController : MonoBehaviour
         if(menuController == null)
         {
             // Busca a referencia para o objeto do CanvasMenu na cena
-            menuController =  GameObject.Find("CanvasMenu").GetComponent<MenuController>();
+            menuController = GameObject.Find("CanvasMenu").GetComponent<MenuController>();
+        }
+
+        if(gameController == null)
+        {
+            // Busca a referencia para o objeto singleton GameController na cena
+            gameController = GameObject.Find("GameController").GetComponent<GameController>();
         }
 
         if (scoreHud == null)
@@ -39,6 +51,20 @@ public class HUDController : MonoBehaviour
             if (scoreObject != null)
                 scoreHud = scoreObject.GetComponent<TextMeshProUGUI>();
         }
+
+        if (startLevelHUD == null)
+        {
+            startLevelHUD = GameObject.Find("StartLevel");
+            UpdateStartLevelHUDText(startLevelHUD);
+        }
+
+        if(winLevelHUD ==  null)
+        {
+            winLevelHUD = GameObject.Find("WinLevel");
+            winLevelHUD.SetActive(false);
+        }
+
+        StartCoroutine(DeactivateStartLevelHUD());
     }
 
     private void Update()
@@ -78,5 +104,25 @@ public class HUDController : MonoBehaviour
     {
         // Chama o menu de pausa
         menuController.ShowPauseMenu();
+    }
+
+    // Atualizando o texto do LevelStart ou WinLevel
+    private void UpdateStartLevelHUDText(GameObject textHUD)
+    {
+        int levelNumber = gameController.CurrentLevel + 1;
+        textHUD.GetComponent<TextMeshProUGUI>().text = "Level " + levelNumber.ToString();
+    }
+
+    public void ActivateWinLevelHUD()
+    {
+        winLevelHUD.SetActive(true);
+        int levelNumber = gameController.CurrentLevel + 1;
+        winLevelHUD.GetComponent<TextMeshProUGUI>().text = "Level " + levelNumber.ToString() + " Clear!";
+    }
+
+    private IEnumerator DeactivateStartLevelHUD()
+    {
+        yield return new WaitForSeconds(3f);
+        startLevelHUD.SetActive(false);
     }
 }
