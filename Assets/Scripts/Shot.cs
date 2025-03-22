@@ -83,7 +83,7 @@ public class Shot : MonoBehaviour
         direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
 
         // Agenda a destruição do tiro após um determinado tempo de vida
-        Invoke("DestroyShot", shotLife);
+        Invoke("DeactivateShot", shotLife);
     }
 
     // Método chamado a cada frame
@@ -99,10 +99,10 @@ public class Shot : MonoBehaviour
         rb.velocity = direction * velocity;
     }
 
-    // Método que destrói o tiro após o tempo de vida expirar
-    private void DestroyShot()
+    // Método que desativa o tiro após o tempo de vida expirar
+    private void DeactivateShot()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
 

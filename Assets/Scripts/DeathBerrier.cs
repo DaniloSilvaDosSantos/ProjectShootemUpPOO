@@ -8,10 +8,15 @@ public class DeathBerrier : MonoBehaviour // Classe que destrói inimigos e tiro
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Shot"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {   
-            // Destroi qualquer inimigo, com a tag "Enemy" ou "Shot" ou tiro que tocar na barreira
+            // Destroi qualquer inimigo que tocar na barreira
             Destroy(collision.gameObject); 
+        }
+        else if (collision.gameObject.CompareTag("Shot"))
+        {
+            // Desativa qualquer tiro que tocar na barreira
+            collision.gameObject.SetActive(false);
         }
     }
 }

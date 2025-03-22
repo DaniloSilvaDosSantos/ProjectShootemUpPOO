@@ -18,8 +18,10 @@ public class Enemie : MonoBehaviour
     // Direção do movimento
     protected Vector2 movimentDirection; 
 
-    // Prefab do tiro que o inimigo dispara
-    [SerializeField] protected GameObject shotPrefab; 
+    // Nome do tiro do inimigo(vai ser usado na hora de chamar o metodo do ShotObjectPooler que vai ativar os tiros)
+    [SerializeField] protected string shotType;
+    //Referencia para o ShotObjectPooler
+    protected ShotObjectPooler shotPooler; 
     // Tempo entre disparos
     [SerializeField] protected float shotCouldown; 
     // Velocidade do tiro
@@ -48,6 +50,9 @@ public class Enemie : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Obtém o Rigidbody2D do inimigo
+
+        shotPooler = GameObject.Find("ShotObjectPooler").GetComponent<ShotObjectPooler>();
+
         life = maxLife; // Define a vida inicial
 
         // Converte o ângulo de movimentação de graus para radianos e define a direção do movimento
@@ -82,13 +87,15 @@ public class Enemie : MonoBehaviour
         rb.velocity = movimentDirection * movimentSpeed; // Move o inimigo na direção e velocidade definidas
     }
 
-    // Método para disparar tiros
+    //Metodo para disparar tiros
     protected virtual void Shot()
     {
-        // Instancia um tiro na posição do inimigo
-        GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
-        
-        // Inicializa o tiro com seus atributos
+        // chama um tiro do object pool na posição e rotação do inimigo
+        GameObject shot = shotPooler.SpawnFromPool(shotType);
+        shot.transform.position = transform.position;
+        shot.transform.rotation = Quaternion.identity;
+
+        // Configura os parâmetros do tiro (velocidade, dano, tiro do inimigo, angulo, tempo de vida)
         shot.GetComponent<Shot>().Initialize(shotVelocity, shotDamage, false, shotAngle, shotLife);
     }
 
@@ -103,6 +110,6 @@ public class Enemie : MonoBehaviour
         if (shot == null || !shot.IsShotPlayer) return;
 
         TakeDamage(shot.Damage); // Aplica dano ao inimigo
-        Destroy(collision.gameObject); // Destroi o tiro após atingir o inimigo
+        collision.gameObject.SetActive(false); // Desabilita o tiro
     }
 }

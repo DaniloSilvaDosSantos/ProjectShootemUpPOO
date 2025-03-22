@@ -29,8 +29,12 @@ public class Hexagon : Enemie
     {
         GetPlayerPosition(); // Atualiza a posição do jogador
 
-        // Cria o tiro e define que ele segue o jogador
-        GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
-        shot.GetComponent<HoamingShot>().Initialize(shotVelocity, shotDamage, false, shotAngle, shotLife, homingDuration, targetPosition);
+        // chama um tiro do object pool na posição e rotação do inimigo
+        GameObject shot = shotPooler.SpawnFromPool(shotType);
+        shot.transform.position = transform.position;
+        shot.transform.rotation = Quaternion.identity;
+
+        // Configura os parâmetros do tiro (velocidade, dano, tiro do inimigo, angulo, tempo de vida)
+        shot.GetComponent<HoamingShot>().Initialize(shotVelocity, shotDamage, false, shotAngle, shotLife, homingDuration, player.position);
     }
 }

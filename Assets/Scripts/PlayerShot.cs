@@ -7,8 +7,10 @@ using UnityEngine;
 // Classe responsável pelos tiros e bombas do jogador
 public class PlayerShot : MonoBehaviour
 {
-    // Prefab do projétil (tiro) do jogador
-    [SerializeField] private GameObject shotPrefab;
+    // Nome do tiro do jogador(vai ser usado na hora de chamar o metodo do ShotObjectPooler que vai ativar os tiros)
+    [SerializeField] private string shotType;
+    //Referencia para o ShotObjectPooler
+    private ShotObjectPooler shotPooler;
 
     // Prefab da bomba do jogador
     [SerializeField] private GameObject bombPrefab;
@@ -65,7 +67,10 @@ public class PlayerShot : MonoBehaviour
     private void Start()
     {
         // Obtém a referência ao script de inputs do jogador
-        playerInputs = GetComponent<PlayerInputs>(); 
+        playerInputs = GetComponent<PlayerInputs>();
+
+        // Obtem a referência ao script do ShotObjectPooler
+        shotPooler = GameObject.Find("ShotObjectPooler").GetComponent<ShotObjectPooler>();
 
         // Inicializa a quantidade de bombas com o valor máximo
         bombs = maxBombs;
@@ -87,8 +92,10 @@ public class PlayerShot : MonoBehaviour
     // Método responsável por instanciar e configurar um tiro
     private void Shot()
     {
-        // Cria um novo tiro na posição do jogador
-        GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
+        // chama um tiro do object pool na posição e rotação do jogador
+        GameObject shot = shotPooler.SpawnFromPool(shotType);
+        shot.transform.position = transform.position;
+        shot.transform.rotation = Quaternion.identity;
 
         // Configura os parâmetros do tiro (velocidade, dano, tiro do jogador, angulo, tempo de vida)
         shot.GetComponent<Shot>().Initialize(shotVelocity, shotDamage, true, shotAngle, shotLife);

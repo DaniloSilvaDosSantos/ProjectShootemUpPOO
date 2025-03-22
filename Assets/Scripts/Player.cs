@@ -135,6 +135,9 @@ public class Player : MonoBehaviour
             if(!shot.IsShotPlayer)
             {
                 TakeDamage(shot.Damage);
+
+                collision.gameObject.SetActive(false);
+
                 Destroy(collision.gameObject);
             } 
         }

@@ -73,6 +73,6 @@ public class Asteroid : MonoBehaviour
         if (shot == null || !shot.IsShotPlayer) return;
 
         TakeDamage(shot.Damage);
-        Destroy(collision.gameObject);
+        collision.gameObject.SetActive(false);
     }
 }
