@@ -96,7 +96,7 @@ public class Shot : MonoBehaviour
     // Método responsável por movimentar o tiro na direção definida
     protected void Moviment()
     {
-        rb.velocity = direction * velocity;
+        rb.linearVelocity = direction * velocity;
     }
 
     // Método que desativa o tiro após o tempo de vida expirar

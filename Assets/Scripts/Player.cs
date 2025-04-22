@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
     // Método para atualizar a velocidade do jogador
     public void UpdateVelocity(Vector2 velocity)
     {
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
     }
 
     // Método chamado ao colidir com outro objeto

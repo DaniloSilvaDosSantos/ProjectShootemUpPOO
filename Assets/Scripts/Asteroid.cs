@@ -61,7 +61,7 @@ public class Asteroid : MonoBehaviour
     // Define o movimento do asteroide
     private void Moviment()
     {
-        rb.velocity = movimentDirection * movimentSpeed;
+        rb.linearVelocity = movimentDirection * movimentSpeed;
     }
 
     // Detecta colisões com tiros do jogador

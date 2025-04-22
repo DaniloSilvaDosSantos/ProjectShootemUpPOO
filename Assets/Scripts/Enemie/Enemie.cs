@@ -84,7 +84,7 @@ public class Enemie : MonoBehaviour
     // Método para movimentação do inimigo
     protected virtual void Moviment()
     {
-        rb.velocity = movimentDirection * movimentSpeed; // Move o inimigo na direção e velocidade definidas
+        rb.linearVelocity = movimentDirection * movimentSpeed; // Move o inimigo na direção e velocidade definidas
     }
 
     //Metodo para disparar tiros
