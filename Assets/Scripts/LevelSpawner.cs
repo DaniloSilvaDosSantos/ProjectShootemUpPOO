@@ -62,7 +62,12 @@ public class LevelSpawner : MonoBehaviour
     private IEnumerator SpawnEnemy(EnemieSpawnInfo enemyInfo)
     {
         yield return new WaitForSeconds(enemyInfo.spawnTime); // Espera o tempo necessário antes de spawnar
-        Instantiate(enemyInfo.enemyPrefab, enemyInfo.spawnPosition, Quaternion.identity); // Instancia o inimigo na posição correta
+
+        if(enemyInfo.difficultLevel <= gameController.DifficultLevel) //Apenas vai instanciar inimigos na dificuldade adequada
+        {
+            Instantiate(enemyInfo.enemyPrefab, enemyInfo.spawnPosition, Quaternion.identity); // Instancia o inimigo na posição correta
+        }
+
         StartNextSpawn(); // Chama o próximo inimigo na fila
     }
 

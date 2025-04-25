@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 11400000, guid: be5606fc424866d4089f3878f7558755, type: 2}
-  - {fileID: 11400000, guid: 8b9bb58c8ecfc8c4e958cc95a2110ef0, type: 2}
-  - {fileID: 11400000, guid: 5d297facc0f276648adecae5fe097b0a, type: 2}
+  - {fileID: 11400000, guid: 5e147309102cdbe4c91903c481ad9fa0, type: 2}
+  difficultLevel: 0

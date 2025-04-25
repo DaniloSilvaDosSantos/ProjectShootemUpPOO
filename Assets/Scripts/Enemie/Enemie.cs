@@ -12,7 +12,8 @@ public class Enemie : MonoBehaviour
     // Referência ao Rigidbody2D para movimentação física
     private Rigidbody2D rb;
     // Velocidade de movimento do inimigo
-    [SerializeField] private float movimentSpeed; 
+    [SerializeField] protected float movimentSpeed;
+    [SerializeField] protected float[] movimentSpeeds; 
     // Ângulo de movimentação (graus)
     [SerializeField] protected float movimentAngle; 
     // Direção do movimento
@@ -23,15 +24,19 @@ public class Enemie : MonoBehaviour
     //Referencia para o ShotObjectPooler
     protected ShotObjectPooler shotPooler; 
     // Tempo entre disparos
-    [SerializeField] protected float shotCouldown; 
+    [SerializeField] protected float shotCouldown;
+    [SerializeField] protected float[] shotCouldowns; 
     // Velocidade do tiro
-    [SerializeField] protected float shotVelocity; 
+    [SerializeField] protected float shotVelocity;
+    [SerializeField] protected float[] shotVelocitys; 
     // Dano causado pelo tiro
     [SerializeField] protected int shotDamage; 
     // Ângulo de disparo do tiro
     [SerializeField] protected float shotAngle; 
     // Tempo de vida do tiro
-    [SerializeField] protected float shotLife; 
+    [SerializeField] protected float shotLife;
+    
+    [SerializeField] protected int[] difficultLevels;
 
     // Propriedade pública para acessar a vida atual do inimigo
     public int Life
@@ -51,6 +56,8 @@ public class Enemie : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>(); // Obtém o Rigidbody2D do inimigo
 
+        AdaptingParamters();
+
         shotPooler = GameObject.Find("ShotObjectPooler").GetComponent<ShotObjectPooler>();
 
         life = maxLife; // Define a vida inicial
@@ -67,6 +74,23 @@ public class Enemie : MonoBehaviour
     private void Update()
     {
         Moviment(); // Atualiza a movimentação do inimigo
+    }
+
+    protected virtual void AdaptingParamters()
+    {
+        GameController gameController = Object.FindFirstObjectByType<GameController>();
+
+        for(int i=0; i < difficultLevels.Length; i++)
+        {
+            if(difficultLevels[i] <= gameController.DifficultLevel)
+            {
+                movimentSpeed = movimentSpeeds[i];
+                shotCouldown = shotCouldowns[i];
+                shotVelocity = shotVelocitys[i];
+
+                i = difficultLevels.Length;
+            }
+        }
     }
 
     // Método para receber dano

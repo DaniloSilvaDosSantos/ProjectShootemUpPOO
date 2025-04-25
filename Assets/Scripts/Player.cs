@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
 
                 collision.gameObject.SetActive(false);
 
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
             } 
         }
     }

@@ -11,5 +11,6 @@ public class EnemieSpawnInfo
     // Posição onde o inimigo será criado
     public Vector2 spawnPosition;
     // Tempo até o inimigo ser spawnado
-    public float spawnTime; 
+    public float spawnTime;
+    public int difficultLevel;
 }

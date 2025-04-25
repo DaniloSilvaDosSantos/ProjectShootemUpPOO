@@ -10,6 +10,12 @@ public class GameController : MonoBehaviour
     private int currentLevel;
     [SerializeField] private List<LevelData> levels;
     private MenuController menuController;
+    [SerializeField] private int difficultLevel;
+    public int DifficultLevel
+    {
+        get {return difficultLevel; }
+        set {difficultLevel = value; }
+    }
 
     public int CurrentLevel
     {

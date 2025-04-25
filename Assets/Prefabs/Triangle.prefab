@@ -167,10 +167,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 1
   movimentSpeed: 3
+  movimentSpeeds:
+  - 3.5
+  - 3.25
+  - 3
+  - 2.75
+  - 2.5
   movimentAngle: 270
   shotType: EnemyShot
-  shotCouldown: 1.25
+  shotCouldown: 2
+  shotCouldowns:
+  - 1.6
+  - 1.8
+  - 2
+  - 2.2
+  - 2.4
   shotVelocity: 15
+  shotVelocitys:
+  - 18
+  - 16.5
+  - 15
+  - 13.5
+  - 12
   shotDamage: 1
   shotAngle: 270
   shotLife: 3
+  difficultLevels: 0900000007000000050000000300000000000000
