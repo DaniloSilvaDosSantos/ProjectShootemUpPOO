@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     // Vida atual do jogador
     private int life;
+    // Registro de dano recebido
+    private int damageTaken;
 
     // Tempo de invulnerabilidade após sofrer dano, configurável pelo Inspector
     [SerializeField] private float invulnerability = 2f;
@@ -53,6 +55,12 @@ public class Player : MonoBehaviour
         set { invulnerability = value; }
     }
 
+    // Propriedade para acessar o dano sofrido pelo jogador
+    public float DamageTaken
+    {
+        get { return damageTaken; }
+    }
+
     // Método chamado quando o objeto é inicializado
     private void Start()
     {
@@ -63,8 +71,9 @@ public class Player : MonoBehaviour
         minBounds = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
 
-        // Define a vida inicial do jogador como a vida máxima
+        // Define a vida inicial do jogador como a vida máxima e define o valor inicial do dano sofrido igual a 0
         life = maxLife;
+        damageTaken = 0;
 
         // Obtém a referência ao Rigidbody2D do jogador
         rb = GetComponent<Rigidbody2D>();
@@ -85,8 +94,9 @@ public class Player : MonoBehaviour
     // Método para reduzir a vida do jogador ao sofrer dano
     public void TakeDamage(int damage)
     {
-        // Reduz a vida do jogador pelo valor do dano recebido
-        Life = life - damage;
+        // Reduz a vida do jogador pelo valor do dano recebido e tambem o registra
+        Life -= damage;
+        damageTaken += damage;
 
         // Reinicia o tempo de invulnerabilidade
         currentInvulnerability = invulnerability;
@@ -98,6 +108,10 @@ public class Player : MonoBehaviour
 
             MenuController menuController = GameObject.Find("CanvasMenu").GetComponent<MenuController>();
             menuController.showTryAgainMenu();
+
+            //Registrando dados do desenpenho do jogador
+            int level = GameObject.FindAnyObjectByType<GameController>().CurrentLevel;
+            GameObject.FindAnyObjectByType<GameSessionLogger>().RegisterResult(level, false, damageTaken);
 
             Destroy(gameObject);
         }

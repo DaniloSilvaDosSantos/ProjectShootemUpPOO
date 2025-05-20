@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5483119130555424700}
   - component: {fileID: 429996571322037570}
+  - component: {fileID: 8626356168736890604}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -46,4 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 11400000, guid: 5e147309102cdbe4c91903c481ad9fa0, type: 2}
-  difficultLevel: 0
+  difficultLevel: 5
+--- !u!114 &8626356168736890604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185330004529441079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db71d9c6cd4ecbc42b498a6539589b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -74,6 +74,11 @@ public class LevelSpawner : MonoBehaviour
     // Rotina para chamar a função do Game Controller que faz carregar o proximo nivel
     private IEnumerator GameControllerGoToNextLevel()
     {
+        //Registrando dados do desenpenho do jogador
+        int level = GameObject.FindAnyObjectByType<GameController>().CurrentLevel;
+        int damageTaken = (int)GameObject.FindAnyObjectByType<Player>().DamageTaken;
+        GameObject.FindAnyObjectByType<GameSessionLogger>().RegisterResult(level, true, damageTaken);
+
         hudController.ActivateWinLevelHUD();
         yield return new WaitForSeconds(3f);
         gameController.GoToNextLevel();
