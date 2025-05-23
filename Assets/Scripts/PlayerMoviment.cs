@@ -7,12 +7,17 @@ public class PlayerMoviment : MonoBehaviour
 {
     // Velocidade máxima do jogador, configurável pelo Inspector
     [SerializeField] private float maxSpeed = 5f;
+    public float MaxSpeed
+    {
+        get{ return maxSpeed; }
+    }
 
     // Referência ao script do jogador (Player)
     private Player player;
 
     // Referência ao script responsável pelos inputs do jogador (PlayerInputs)
     private PlayerInputs playerInputs;
+    private PlayerAIController playerAIController;
 
     // Método chamado quando o objeto é inicializado
     private void Start()
@@ -22,12 +27,21 @@ public class PlayerMoviment : MonoBehaviour
 
         // Obtém a referência ao componente PlayerInputs no mesmo GameObject
         playerInputs = GetComponent<PlayerInputs>();
+
+        playerAIController = GetComponent<PlayerAIController>();
     }
 
     // Método chamado a cada frame para atualizar o movimento do jogador
     private void Update()
     {
-        Move();
+        if (GameController.Instance.IsPlayerAI)
+        {
+            playerAIController.AIBrain();
+        }
+        else
+        {
+            Move();
+        }
     }
 
     // Método responsável por calcular e aplicar a velocidade do jogador

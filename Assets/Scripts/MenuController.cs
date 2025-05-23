@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +11,12 @@ public class MenuController : MonoBehaviour
     // Referência ao menu de pausa
     [SerializeField] private GameObject pauseMenu; 
     // Referência ao menu de tentar novamente
-    [SerializeField] private GameObject tryagainMenu; 
+    [SerializeField] private GameObject tryagainMenu;
+    [SerializeField] private GameObject playerAIMenu;
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             ShowMainMenu(); // Exibe o menu principal se estiver na cena do menu
         }
@@ -24,6 +26,26 @@ public class MenuController : MonoBehaviour
     public void ShowMainMenu()
     {
         mainMenu.SetActive(true); // Ativa o menu principal
+    }
+
+    public void HideMainMenu()
+    {
+        mainMenu.SetActive(false);
+    }
+
+    public void ShowPlayerAIMenu()
+    {
+        playerAIMenu.SetActive(true);
+    }
+
+    public void ActivatePlayerAI()
+    {
+        GameController.Instance.IsPlayerAI = true;
+    }
+
+    public void DeactivatePlayerAI()
+    {
+        GameController.Instance.IsPlayerAI = false;
     }
 
     // Metodo para mostrar o menu de pause

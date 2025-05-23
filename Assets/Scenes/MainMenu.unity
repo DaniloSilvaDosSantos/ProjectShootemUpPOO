@@ -287,10 +287,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 429996571322037570, guid: 14f0a8cca185524499ccc4c1430c86e6, type: 3}
-      propertyPath: difficultLevel
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5483119130555424700, guid: 14f0a8cca185524499ccc4c1430c86e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -348,17 +344,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2749304172026835683, guid: 8cee78f1e52a09c4e9c0a7860e516dfa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6513293460028660899, guid: 8cee78f1e52a09c4e9c0a7860e516dfa, type: 3}
       propertyPath: m_Name
       value: CanvasMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7153131435619698648, guid: 8cee78f1e52a09c4e9c0a7860e516dfa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593979011017098523, guid: 8cee78f1e52a09c4e9c0a7860e516dfa, type: 3}
       propertyPath: m_Pivot.x
@@ -438,10 +426,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593979011017098523, guid: 8cee78f1e52a09c4e9c0a7860e516dfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598027816713309028, guid: 8cee78f1e52a09c4e9c0a7860e516dfa, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

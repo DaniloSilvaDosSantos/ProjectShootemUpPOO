@@ -25,6 +25,11 @@ public class PlayerInputs : MonoBehaviour
         set { bombPressed = value; }
     }
 
+    void Start()
+    {
+        if (GameController.Instance.IsPlayerAI) digitalAnalogic.gameObject.SetActive(false);
+    }
+
     // Método chamado a cada frame para atualizar a movimentação
     private void Update()
     {

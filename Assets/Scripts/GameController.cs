@@ -16,6 +16,12 @@ public class GameController : MonoBehaviour
         get {return difficultLevel; }
         set {difficultLevel = value; }
     }
+    private bool isPlayerAI;
+    public bool IsPlayerAI
+    {
+        get {return isPlayerAI;}
+        set {isPlayerAI = value;}
+    }
 
     public int CurrentLevel
     {
